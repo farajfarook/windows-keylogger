@@ -10,6 +10,6 @@ private:
 	LPCWSTR filename;
 public:
 	LogFile(LPCWSTR infilename);
-	void Write(LPWSTR content);
+	void Write(TCHAR content[]);
 };
 

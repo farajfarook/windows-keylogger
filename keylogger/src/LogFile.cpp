@@ -5,7 +5,7 @@ LogFile::LogFile(LPCWSTR infilename) {
 	this->filename = infilename;
 }
 
-void LogFile::Write(LPWSTR content) {
+void LogFile::Write(TCHAR content[]) {
 
 	hFile = CreateFile(
 		filename,				// name of the write
@@ -28,8 +28,8 @@ void LogFile::Write(LPWSTR content) {
 	bool bErrorFlag = WriteFile(
 		hFile,           // open file handle
 		content,         // start of data to write
-		_tcslen(content),  // number of bytes to write
-		&dwBytesWritten, // number of bytes that were written
+		lstrlen(content),  // number of bytes to write
+		&dwBytesWritten, // number of bytes that were written		
 		NULL);           // no overlapped structure
 	if (!bErrorFlag) {
 		MessageBoxEx(NULL, _T("Error writing to log file."), _T("Error"), MB_ICONERROR, NULL);
