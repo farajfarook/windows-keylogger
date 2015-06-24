@@ -3,7 +3,7 @@ Windows Key Logger application for educational purposes
 
 This application will capture all your keyboard key press events and save it in a file in the background.!
 
-**disclaimer** *This application is created with no warranty or neither I would take any responsibilities for any sort of threats imposed by any individual or a group of andividuals for any party. This application is developed soley for educational purposes of learning how Windows C++ API works in global keyboard hooks*
+**disclaimer** *This application is created with no warranty or neither I would take any responsibilities for any sort of threats imposed by any individual or a group of individuals towards anyone. This application is developed soley for educational purposes of learning how Windows C++ API works in global keyboard hooks*
 
 ##Getting started
 ####Steps to build
