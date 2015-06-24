@@ -1,5 +1,5 @@
 # Windows Keylogger
-Windows Key Logger application for educational purposes
+User Mode - Windows Key Logger application for educational purposes
 
 This application will capture all your keyboard key press events and save it in a file in the background.!
 
