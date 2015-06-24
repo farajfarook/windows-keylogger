@@ -24,11 +24,12 @@ void LogFile::Write(TCHAR content[]) {
 	SetFilePointer(hFile, 0, NULL, FILE_END);
 	
 	DWORD dwBytesWritten = 0;
+	int bufferSize = lstrlen(content) * sizeof(TCHAR);
 
 	bool bErrorFlag = WriteFile(
 		hFile,           // open file handle
 		content,         // start of data to write
-		lstrlen(content),  // number of bytes to write
+		bufferSize,      // number of bytes to write
 		&dwBytesWritten, // number of bytes that were written		
 		NULL);           // no overlapped structure
 	if (!bErrorFlag) {

