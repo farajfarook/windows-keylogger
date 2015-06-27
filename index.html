@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Windows Keylogger by farajfarook</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Windows Keylogger</h1>
+        <h2>Windows Key Logger application for educational purposes</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/farajfarook/windows-keylogger/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/farajfarook/windows-keylogger/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/farajfarook/windows-keylogger" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="windows-keylogger" class="anchor" href="#windows-keylogger" aria-hidden="true"><span class="octicon octicon-link"></span></a>Windows Keylogger</h1>
+
+<p>User Mode - Windows Key Logger application for educational purposes</p>
+
+<p>This application will capture all your keyboard key press events and save it in a file in the background.!</p>
+
+<p><strong>disclaimer</strong> <em>This application is created with no warranty or neither I would take any responsibilities for any sort of threats imposed by any individual or a group of individuals towards anyone. This application is developed soley for educational purposes of learning how Windows C++ API works in global keyboard hooks</em></p>
+
+<h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<h4>
+<a id="steps-to-build" class="anchor" href="#steps-to-build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps to build</h4>
+
+<ol>
+<li>Clone the repository to your local PC</li>
+<li>Open the solution with visual studio with C++</li>
+<li>Build the project</li>
+</ol>
+
+<h4>
+<a id="steps-to-executekill" class="anchor" href="#steps-to-executekill" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps to execute/kill</h4>
+
+<ol>
+<li>Get the executables from the build folder, and execute the <code>keylogger.exe</code>
+</li>
+<li>To kill the process you have to open up the <code>task manager</code> and search the process and kill it.</li>
+</ol>
+
+<h2>
+<a id="more-information" class="anchor" href="#more-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>More information</h2>
+
+<p>Application is designed to write a file with the name <code>keylogger.txt</code> which contains all the key press done in the windows host where this application is running. This file is created along with the <code>exe</code> file which is excuted. You can change this file name from the <code>stdafx.h</code> file's line: <code>#define LOGFILE "keylogger.txt"</code></p>
+
+<p>In the debug mode application is written to write back to the log output window. </p>
+
+<p>Application is <strong>Unicode enabled.</strong> So if the keyboard input has some extraordinary characters those will also get logged in the file.</p>
+
+<ul>
+<li>Update me with the bug as posting new issues in the github.</li>
+<li>Feel free to fork the project and fix any bugs that you find.</li>
+<li>have fun!</li>
+</ul>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
